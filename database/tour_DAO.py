@@ -16,16 +16,16 @@ class TourDAO:
             return None
 
         cursor = cnx.cursor(dictionary=True)
-        query = """ ADD YOUR QUERY """ # TODO
+        query = """SELECT * FROM tour"""
         try:
             cursor.execute(query)
             for row in cursor:
                 tour = Tour(
                     id=row["id"],
+                    id_regione=row["id_regione"],
                     nome=row["nome"],
                     durata_giorni=row["durata_giorni"],
-                    costo=row["costo"],
-                    id_regione=row["id_regione"]
+                    costo=row["costo"]
                 )
                 result[tour.id] = tour
         except Exception as e:
@@ -50,7 +50,7 @@ class TourDAO:
             return None
 
         cursor = cnx.cursor(dictionary=True)
-        query = """ ADD YOUR QUERY """ # TODO
+        query = """SELECT * FROM tour_attrazione"""
         try:
             cursor.execute(query)
             for row in cursor:
